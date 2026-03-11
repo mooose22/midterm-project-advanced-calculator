@@ -1,7 +1,7 @@
 import pytest
 
 from app.calculator import Calculator
-from app.exceptions import OperationError, ValidationError
+from app.exceptions import HistoryError, OperationError, ValidationError
 
 
 def test_perform_operation_add():
@@ -59,3 +59,40 @@ def test_get_history_returns_copy():
     history.append("fake")
 
     assert len(calculator.history) == 1
+
+
+def test_undo():
+    calculator = Calculator()
+    calculator.perform_operation("add", 1, 2)
+    calculator.perform_operation("multiply", 3, 4)
+
+    calculator.undo()
+
+    assert len(calculator.history) == 1
+    assert calculator.history[0].operation == "add"
+
+
+def test_redo():
+    calculator = Calculator()
+    calculator.perform_operation("add", 1, 2)
+    calculator.perform_operation("multiply", 3, 4)
+
+    calculator.undo()
+    calculator.redo()
+
+    assert len(calculator.history) == 2
+    assert calculator.history[-1].operation == "multiply"
+
+
+def test_undo_without_history_raises():
+    calculator = Calculator()
+
+    with pytest.raises(HistoryError, match="Nothing to undo."):
+        calculator.undo()
+
+
+def test_redo_without_history_raises():
+    calculator = Calculator()
+
+    with pytest.raises(HistoryError, match="Nothing to redo."):
+        calculator.redo()
