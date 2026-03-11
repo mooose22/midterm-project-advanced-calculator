@@ -4,75 +4,78 @@
 ![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue)
 
 # Advanced Calculator Application
-Project Description
 
-This project is an advanced Python calculator application built with object-oriented design principles and multiple software design patterns. The calculator supports various arithmetic operations, maintains calculation history, allows undo and redo actions, logs calculations, and automatically saves history to a CSV file.
+---
 
-The application includes a command-line interface (REPL) where users can perform calculations interactively.
+## Project Description
 
-Design patterns implemented in this project include:
+This project is an advanced Python calculator application built using object-oriented programming principles and several software design patterns. The calculator supports multiple arithmetic operations, maintains a calculation history, allows undo and redo functionality, logs calculations, and automatically saves history to a CSV file.
 
-Factory Pattern – used to create arithmetic operations dynamically
+The application also includes a command-line interface (REPL) where users can perform calculations interactively.
 
-Memento Pattern – used to support undo and redo functionality
+This project demonstrates the use of several software design patterns:
 
-Observer Pattern – used for logging and auto-saving calculations
+- **Factory Pattern** – used to dynamically create arithmetic operations
+- **Memento Pattern** – used to support undo and redo functionality
+- **Observer Pattern** – used for logging calculations and auto-saving history
 
-The project also includes comprehensive unit testing and a CI/CD pipeline using GitHub Actions.
+The project also includes comprehensive unit testing and a continuous integration pipeline using GitHub Actions.
 
-Features
-Arithmetic Operations
+---
+
+## Features
+
+### Arithmetic Operations
 
 The calculator supports the following operations:
 
-add
+- add
+- subtract
+- multiply
+- divide
+- power
+- root
+- modulus
+- integer division
+- percentage
+- absolute difference
 
-subtract
+---
 
-multiply
+### History Management
 
-divide
+The calculator maintains a full calculation history and allows users to:
 
-power
+- view calculation history
+- clear history
+- undo previous calculations
+- redo undone calculations
 
-root
+---
 
-modulus
+### Logging
 
-integer division
+All calculations are logged using Python’s built-in logging module.
 
-percentage
+---
 
-absolute difference
+### Automatic History Saving
 
-History Management
+Calculation history can automatically be saved to a CSV file using **pandas**.
 
-The calculator stores all calculations and supports:
+---
 
-viewing calculation history
+### Configuration Management
 
-clearing history
+Application configuration is handled using environment variables stored in a `.env` file.
 
-undo
+---
 
-redo
+### Command Line Interface (REPL)
 
-Logging
+Users interact with the calculator through commands such as:
 
-All calculations are logged using Python's logging module.
-
-Automatic History Saving
-
-Calculation history is automatically saved to a CSV file using pandas.
-
-Configuration Management
-
-Application configuration is handled through environment variables using .env.
-
-Command Line Interface (REPL)
-
-Users can interact with the calculator through commands such as:
-
+```
 add 5 3
 multiply 4 6
 history
@@ -82,52 +85,72 @@ save
 load
 help
 exit
-Project Structure
+```
+
+---
+
+## Project Structure
+
+```
 project_root/
-│
-├── app/
-│   ├── calculator.py
-│   ├── calculator_config.py
-│   ├── calculator_memento.py
-│   ├── calculation.py
-│   ├── exceptions.py
-│   ├── history.py
-│   ├── input_validators.py
-│   ├── logger.py
-│   └── operations.py
-│
-├── tests/
-│   ├── test_calculator.py
-│   ├── test_calculation.py
-│   ├── test_operations.py
-│   ├── test_history.py
-│   └── test_logger.py
-│
-├── .github/workflows/
-│   └── python-app.yml
-│
-├── .env
-├── requirements.txt
-└── README.md
-Installation
+
+app/
+├── calculator.py
+├── calculator_config.py
+├── calculator_memento.py
+├── calculation.py
+├── exceptions.py
+├── history.py
+├── input_validators.py
+├── logger.py
+└── operations.py
+
+tests/
+├── test_calculator.py
+├── test_calculation.py
+├── test_operations.py
+├── test_history.py
+└── test_logger.py
+
+.github/workflows/
+└── python-app.yml
+
+.env
+requirements.txt
+README.md
+```
+
+---
+
+## Installation
 
 Clone the repository:
 
-git clone <repository_url>
-cd midterm-project-python-for-web-api-development
+```
+git clone https://github.com/mooose22/midterm-project-advanced-calculator.git
+cd midterm-project-advanced-calculator
+```
 
 Create a virtual environment:
 
+```
 python3 -m venv venv
 source venv/bin/activate
+```
 
 Install dependencies:
 
+```
 pip install -r requirements.txt
-Configuration Setup
+```
 
-Create a .env file in the project root with the following variables:
+---
 
+## Configuration Setup
+
+Create a `.env` file in the project root with the following variables:
+
+```
 CALCULATOR_LOG_DIR=logs
 CALCULATOR_HISTORY_DIR=history
 CALCULATOR_LOG_FILE=logs/calculator.log
@@ -137,17 +160,23 @@ CALCULATOR_AUTO_SAVE=true
 CALCULATOR_PRECISION=2
 CALCULATOR_MAX_INPUT_VALUE=1000000
 CALCULATOR_DEFAULT_ENCODING=utf-8
+```
 
-These values configure logging, history storage, calculation precision, and input limits.
+These configuration values control logging, history storage, calculation precision, and input validation limits.
 
-Running the Calculator
+---
+
+## Running the Calculator
 
 Start the interactive calculator with:
 
+```
 python -m app.calculator
+```
 
 Example session:
 
+```
 >>> add 2 3
 Result: 5
 
@@ -166,48 +195,54 @@ Redo successful.
 
 >>> exit
 Goodbye.
-Running Tests
+```
+
+---
+
+## Running Tests
 
 Run the full test suite with:
 
+```
 pytest
+```
 
-Run tests with coverage:
+Run tests with coverage reporting:
 
+```
 pytest --cov=app --cov-report=term-missing
+```
 
-The project maintains greater than 90% test coverage.
+The project maintains **greater than 90% test coverage**.
 
-Continuous Integration
+---
 
-This project uses GitHub Actions for automated testing.
+## Continuous Integration
 
-The workflow automatically:
+This project uses **GitHub Actions** for automated testing.
 
-Checks out the repository
+The CI workflow automatically:
 
-Installs dependencies
+- checks out the repository
+- installs dependencies
+- runs the test suite
+- verifies that coverage remains above 90%
 
-Runs all tests
+The workflow runs on every push or pull request to the **main** branch.
 
-Verifies that test coverage remains above 90%
+---
 
-The workflow runs on every push or pull request to the main branch.
+## Technologies Used
 
-Technologies Used
+- Python
+- pytest
+- pytest-cov
+- pandas
+- python-dotenv
+- GitHub Actions
 
-Python
+---
 
-pytest
-
-pytest-cov
-
-pandas
-
-python-dotenv
-
-GitHub Actions
-
-Author
+## Author
 
 Mostafa Moawad
