@@ -2,7 +2,7 @@ import logging
 
 
 def setup_logger(log_file):
-    logger = logging.getLogger("calculator_app")
+    logger = logging.getLogger(f"calculator_app_{log_file}")
     logger.setLevel(logging.INFO)
 
     if not logger.handlers:
