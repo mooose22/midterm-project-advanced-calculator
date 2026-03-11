@@ -1,4 +1,9 @@
-Advanced Calculator Application
+![Python](https://img.shields.io/badge/python-3.11-blue)
+![Tests](https://img.shields.io/badge/tests-pytest-green)
+![Coverage](https://img.shields.io/badge/coverage-90%25+-brightgreen)
+![CI](https://img.shields.io/badge/CI-GitHub%20Actions-blue)
+
+# Advanced Calculator Application
 Project Description
 
 This project is an advanced Python calculator application built with object-oriented design principles and multiple software design patterns. The calculator supports various arithmetic operations, maintains calculation history, allows undo and redo actions, logs calculations, and automatically saves history to a CSV file.
